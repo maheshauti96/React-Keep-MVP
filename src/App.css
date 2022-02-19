@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  padding: 25px;
+  padding: 0px 25px;
 }
 
 .note-input {
@@ -31,9 +31,19 @@
 .delete-btn {
   border: none;
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
+  background: unset;
+}
+
+.edit-btn {
+  border: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  cursor: pointer;
+  background: unset;
 }
 
 .note-text-area {
@@ -51,7 +61,7 @@
 
 /* Remove extra left and right margins, due to padding */
 .row {
-  margin: 0 -5px;
+  margin: 10px -5px;
 }
 
 /* Clear floats after the columns */
@@ -75,7 +85,7 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 16px;
   text-align: center;
-  background-color: #f1f1f1;
+  background-color: #fdf485;
   margin: 15px;
   position: relative;
 }
