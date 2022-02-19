@@ -4,37 +4,59 @@ import React from "react";
 
 function App() {
   const [allNotes, setAllNotes] = React.useState([]);
-  const [note, setNote] = React.useState("");
+  const [title, setTitle] = React.useState("");
+  const [description, setDescription] = React.useState("");
 
   function handleNote(e) {
-    setNote(e.target.value);
+    setTitle(e.target.value);
+  }
+
+  function handleDescription(e) {
+    setDescription(e.target.value);
   }
 
   function handleSave(e) {
+    const noteObject = {
+      title: title,
+      description: description,
+    };
     e.preventDefault();
-    if (note) {
-      setAllNotes([...allNotes, note]);
-      setNote("");
+    if (title) {
+      setAllNotes([...allNotes, noteObject]);
+      setTitle("");
+      setDescription("");
     }
   }
   return (
     <div className="App">
-      <form>
+      <form className="note-form">
         <input
           className="note-input"
-          value={note}
+          value={title}
           type="text"
           onChange={handleNote}
+          placeholder="title"
+        />
+        <textarea
+          className="note-text-area"
+          value={description}
+          type="text"
+          onChange={handleDescription}
+          placeholder="description"
         />
         <button type="submit" className="save-btn" onClick={handleSave}>
           Save
         </button>
       </form>
 
-      <div className="notes">
+      <div className="row">
         {allNotes
           ? allNotes.map((note, index) => (
-              <NoteCard note={note} srno={index + 1} />
+              <NoteCard
+                title={note.title}
+                description={note.description}
+                srno={index + 1}
+              />
             ))
           : null}
       </div>
@@ -44,8 +66,14 @@ function App() {
 
 function NoteCard(props) {
   return (
-    <div className="note">
-      {props.srno} - <b>{props.note}</b>
+    <div class="column">
+      <div class="card">
+        <h3>{props.title}</h3>
+        <p>{props.description}</p>
+        <button class="delete-btn">
+        ❌
+        </button>
+      </div>
     </div>
   );
 }
